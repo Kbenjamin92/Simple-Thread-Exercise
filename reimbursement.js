@@ -15,27 +15,43 @@ console.log(`
  ENJOY!!!
 `);
 
-const reimbursement = () => {
-  const reimbursementCalculationValues = [];
-  const travelDay = {
-    reimbursementRateInHighCostCity: 55,
-    reimbursementRateInLowCostCity: 45,
-  };
-  const fullDay = {
-    reimbursementRateInHighCostCity: 85,
-    reimbursementRateInLowCostCity: 75,
-  };
-  let cityType1 = "high cost";
-  let cityType2 = "low cost";
-
-  const numberOfProjects = prompt("Enter the number of project for this set: ");
-  if (numberOfProjects > 0) {
-    console.log(`Project ${numberOfProjects}`);
-    const startDate = prompt("Enter start date: ");
-    const endDate = prompt("Enter end date: ");
-
-    const typeOfCity = prompt("Enter the type of city you are in: ");
-    if (typeOfCity.toLowerCase() === cityType1) {
-    }
-  }
+const reimbursementCalculationValues = [];
+const travelDay = {
+reimbursementRateInHighCostCity: 55,
+reimbursementRateInLowCostCity: 45,
 };
+const fullDay = {
+reimbursementRateInHighCostCity: 85,
+reimbursementRateInLowCostCity: 75,
+};
+let cityType1 = "high cost";
+let cityType2 = "low cost";
+
+
+const reimbursement = () => {
+    const numberOfProjects = prompt("Enter the number of project for this set: ");
+    let projects = 0;
+    while(parseInt(numberOfProjects) > projects) {
+        if (numberOfProjects > 0) {
+            console.log(`Project:${numberOfProjects}`);
+        }
+        const startDate = prompt("Enter start date: ");
+        const endDate = prompt("Enter end date: ");
+        const typeOfCity = prompt("Enter the type of city you are in: ").toLowerCase();
+    
+        if (startDate[2] === endDate[2] && typeOfCity === cityType2) {
+            reimbursementCalculationValues.push(fullDay.reimbursementRateInLowCostCity);
+            console.log(reimbursementCalculationValues);
+        } else if (startDate[2] < endDate[2] && typeOfCity === cityType1) {
+            reimbursementCalculationValues.push(fullDay.reimbursementRateInLowCostCity);
+
+        }
+        
+        projects++
+    }
+  
+    
+
+};
+
+reimbursement();
