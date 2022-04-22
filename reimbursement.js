@@ -19,39 +19,43 @@ const reimbursementCalculationValues = [];
 const travelDay = {
 reimbursementRateInHighCostCity: 55,
 reimbursementRateInLowCostCity: 45,
-};
+}
 const fullDay = {
 reimbursementRateInHighCostCity: 85,
 reimbursementRateInLowCostCity: 75,
-};
-let cityType1 = "high cost";
-let cityType2 = "low cost";
+}
+let highCost = "high cost";
+let lowCost = "low cost";
 
 
 const reimbursement = () => {
     const numberOfProjects = prompt("Enter the number of project for this set: ");
     let projects = 0;
     while(parseInt(numberOfProjects) > projects) {
-        if (numberOfProjects > 0) {
-            console.log(`Project:${numberOfProjects}`);
-        }
+        console.log(`Project:${projects}`);
+        console.log(projects);
         const startDate = prompt("Enter start date: ");
         const endDate = prompt("Enter end date: ");
         const typeOfCity = prompt("Enter the type of city you are in: ").toLowerCase();
     
-        if (startDate[2] === endDate[2] && typeOfCity === cityType2) {
+        if (startDate[2] === endDate[2] && typeOfCity === lowCost) {
+            if(!startDate[2] || !endDate[2]) {
+              console.log('You did not enter the date correctly!!');
+              continue
+            }
             reimbursementCalculationValues.push(fullDay.reimbursementRateInLowCostCity);
             console.log(reimbursementCalculationValues);
-        } else if (startDate[2] < endDate[2] && typeOfCity === cityType1) {
+        } else if (startDate[2] < endDate[2] && typeOfCity === highCost) {
+            if(!startDate[2] || !endDate[2]) {
+              console.log('You did not enter the date correctly!!');
+              continue
+            }
             reimbursementCalculationValues.push(fullDay.reimbursementRateInLowCostCity);
 
         }
         
         projects++
     }
-  
-    
-
-};
+}
 
 reimbursement();
