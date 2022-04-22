@@ -15,7 +15,6 @@ console.log(`
  Thanks for using the Reimbursement Calculator!
 `);
 
-
 const reimbursementCalculationValues = [];
 const travelDay = {
   reimbursementRateInHighCostCity: 55,
@@ -57,7 +56,6 @@ const reimbursement = () => {
             if (endDay) {
               reimbursementCalculationValues.push(travelDay.reimbursementRateInLowCostCity)
             }
-            
             while (endDay > startDay + 1) {
               let countedDays = startDay++;
 
@@ -65,7 +63,6 @@ const reimbursement = () => {
                 reimbursementCalculationValues.push(fullDay.reimbursementRateInLowCostCity);
               }
             }
-
         } else if (startDate[2] < endDate[2] && typeOfCity === highCost) {
           let startDay = parseInt(startDate[2]);
             let endDay = parseInt(endDate[2]);
