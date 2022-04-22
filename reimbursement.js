@@ -28,19 +28,10 @@ const fullDay = {
 let highCost = "high cost";
 let lowCost = "low cost";
 
-// Calculate the reimbursement Rates
-const calculateReimbursementRate = () => {
-  let total = 0;
-  for (const element of reimbursementCalculationValues) {
-    total+= element;
-    return total;
-  }
-  console.log(total);
-}
 
 // Collection the 
 const reimbursement = () => {
-    const numberOfProjects = prompt("Enter the number of project for this set: ");
+    const numberOfProjects = prompt("Enter the number of projects for this set: ");
     let projects = 1;
     while (parseInt(numberOfProjects) >= projects) {
         console.log(`Project:${projects}`);
@@ -74,7 +65,6 @@ const reimbursement = () => {
                 reimbursementCalculationValues.push(fullDay.reimbursementRateInLowCostCity);
               }
             }
-          console.log(reimbursementCalculationValues);
 
         } else if (startDate[2] < endDate[2] && typeOfCity === highCost) {
           let startDay = parseInt(startDate[2]);
@@ -93,16 +83,20 @@ const reimbursement = () => {
                 reimbursementCalculationValues.push(fullDay.reimbursementRateInHighCostCity);
               }
             }
-          console.log(reimbursementCalculationValues);
         }
         
         projects++
     }
-    if (reimbursementCalculationValues.length !== 0) {
-      console.log(`
-        Your calculated reimbursement amount for the following days of ${startDate} and ${endDate} are.`);
-      calculateReimbursementRate();
+    // Calculate the reimbursement Rates
+    let total = 0;
+    for (const element of reimbursementCalculationValues) {
+      total+= element;
     }
+    console.log(`Your total reimbursement amount is $${total}`);
 }
 
 reimbursement();
+
+
+
+
